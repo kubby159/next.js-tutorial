@@ -1,9 +1,10 @@
-import NavBar from "../components/NavBar";
+import Layout from "../components/Layout";
 
+import Head from "next/head";
 export default function App({ Component, pageProps }) {
   return (
-    <div>
-      <NavBar />
+    <Layout>
+      <Head></Head>
       <Component {...pageProps} />
       <style jsx global>{`
         a {
@@ -21,6 +22,6 @@ export default function App({ Component, pageProps }) {
           background: green;
         }
       `}</style>
-    </div>
+    </Layout>
   );
 }
