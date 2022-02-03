@@ -6,17 +6,7 @@ import Seo from "../components/Seo";
 export default function Home({ results }) {
   const router = useRouter();
   const onClick = (id, title) => {
-    router.push(
-      {
-        //URL을 설정하고, 정보를 얹어주는 부분
-        pathname: `/movies/${id}`,
-        query: {
-          title: `${title}`,
-        },
-      },
-      //마스킹하는 부분
-      `/movies/${id}`
-    );
+    router.push(`/movies/${title}/${id}`);
   };
 
   return (
@@ -30,15 +20,7 @@ export default function Home({ results }) {
           key={movie.id}
         >
           <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
-          <Link
-            href={{
-              pathname: `/movies/${movie.id}`,
-              query: {
-                title: movie.original_title,
-              },
-            }}
-            as={`/movies/${movie.id}`}
-          >
+          <Link href={`movies/${movie.original_title}/${movie.id}`}>
             <a>{movie.original_title}</a>
           </Link>
         </div>
